@@ -10,10 +10,6 @@ const {Server} = require('socket.io')
 const io = new Server(server)
 
 io.on('connection', (socket)=>{
-    //console.log('Un usuario se ha conectado')
-    /* socket.on('chat',(msg)=>{
-        console.log('Mensaje: '+msg)
-    }) */
 
     socket.on('chat', (msg)=>{
         io.emit('chat', msg)
@@ -21,8 +17,7 @@ io.on('connection', (socket)=>{
 })
 
 app.get('/', (req,res)=>{
-    //res.send('<h1>Aplicación de Chat en Tiempo Real</h1>')
-    //console.log(__dirname)
+    
     res.sendfile(`${__dirname}/cliente/index.html`)
 })
 
